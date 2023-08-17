@@ -1,4 +1,5 @@
 "Arquivo que estudantes devem editar"
+PATH_SEPARATOR = "/"
 
 
 def show_deepest_file(context):
@@ -6,7 +7,8 @@ def show_deepest_file(context):
         print("No files found")
     else:
         deepest_file = max(
-            context["all_files"], key=lambda file: len(file.split("/"))
+            context["all_files"],
+            key=lambda file: len(file.split(PATH_SEPARATOR)),
         )
         print(f"Deepest file: {deepest_file}")
 
@@ -18,11 +20,11 @@ def find_file_by_name(context, search_term, case_sensitive=True):
     found_files = []
 
     for path in context["all_files"]:
-        file_name = path.split("/")[-1]
+        file_name = path.split(PATH_SEPARATOR)[-1]
 
         if not case_sensitive:
-            file_name.lower()
-            search_term.lower()
+            file_name = file_name.lower()
+            search_term = search_term.lower()
 
         if search_term in file_name:
             found_files.append(path)
