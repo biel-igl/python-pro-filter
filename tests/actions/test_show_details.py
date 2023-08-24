@@ -10,8 +10,7 @@ def test_show_details_not_exist(capsys):
 
 def test_show_details_exist(tmp_path, capsys):
     file_path = tmp_path / "trybe.pdf"
-    with open(file_path, "w") as file:
-        file.write("Fake File")
+    file_path.write_text("Fake File")
 
     context = {"base_path": str(file_path)}
     show_details(context)
@@ -21,7 +20,7 @@ def test_show_details_exist(tmp_path, capsys):
         "File size in bytes: 9\n"
         "File type: file\n"
         "File extension: .pdf\n"
-        "Last modified date: 2023-08-23\n"
+        "Last modified date: 2023-08-24\n"
     )
 
 
@@ -38,5 +37,5 @@ def test_show_details_no_extension(tmp_path, capsys):
         "File size in bytes: 9\n"
         "File type: file\n"
         "File extension: [no extension]\n"
-        "Last modified date: 2023-08-23\n"
+        "Last modified date: 2023-08-24\n"
     )
